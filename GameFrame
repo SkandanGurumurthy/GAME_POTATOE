@@ -1,0 +1,32 @@
+/**
+ * Purpose: to play around with Graphics
+ * This is the gameframe that houses the panel
+ */
+
+import javax.swing.JFrame;
+import java.awt.Dimension;
+import java.awt.Color;
+
+public class GameFrame extends JFrame
+{
+    private JFrame frame;
+    private GamePanel panel;
+
+    public GameFrame()
+    {
+        frame = new JFrame("Entre the title of the game here");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        panel = new GamePanel();
+        panel.setPreferredSize(new Dimension(500,500));
+        panel.setBackground(Color.CYAN);
+
+        frame.getContentPane().add(panel);
+    }
+
+    public void display()
+    {
+        frame.pack();
+        frame.setVisible(true);
+    }
+}
