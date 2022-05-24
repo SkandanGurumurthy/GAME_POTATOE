@@ -46,7 +46,7 @@ public class StartPanel extends JPanel
    */
   
   /**
-   * Label to guide the user to what should be inputted.
+   * Label to guide the user to what should be inputed.
    */
   private JLabel clueLabel;
   
