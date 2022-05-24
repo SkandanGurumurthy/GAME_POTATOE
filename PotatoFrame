@@ -23,16 +23,16 @@ public class PotatoFrame extends JFrame
     /**
      * The instance variable used to add a celebrity to the game.
      */
-    private StartPanel startPanel;
+    private PotatoStartPanel startPanel;
 
     /**
-     * A reference to the CelebrityGame instance to allow for minimized coupling in the object structure.
+     * A reference to the PotatoGame instance to allow for minimized coupling in the object structure.
      */
     private PotatoGame controller;
 
     /**
-     * Builds an instance of the CelebFrame with a reference to the CelebrityGame instance.
-     * @param controller A reference to a CelebrityGame to share with the CelebPanel instance.
+     * Builds an instance of the PotatoFrame with a reference to the PotatoGame instance.
+     * @param controller A reference to a PotatoGame to share with the PotatoPanel instance.
      */
     public PotatoFrame(PotatoGame controllerRef)
     {
@@ -54,7 +54,7 @@ public class PotatoFrame extends JFrame
         panelCards.add(startPanel, "START");
 
         this.setSize(480,720);
-        this.setTitle("Scutero Celebrity Game");
+        this.setTitle("Potato PoetAhtoe Game");
         this.add(panelCards);
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
