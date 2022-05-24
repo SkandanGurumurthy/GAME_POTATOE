@@ -19,23 +19,23 @@ public class PotatoGame
     /**
      * The ArrayList of potato values that make up the game
      */
-    private ArrayList<Base> celebGameList;
+    private ArrayList<Base> PotatoGameList;
 
     /**
      * Builds the game and starts the GUI
      */
     public PotatoGame()
     {
-        celebGameList = new ArrayList<Base>();
+        PotatoGameList = new ArrayList<Base>();
         gameWindow = new PotatoFrame(this);
     }
 
     /**
-     * Prepares the game to start by re-initializing the celebGameList and having the gameFrame open the start screen.
+     * Prepares the game to start by re-initializing the PotatoGameList and having the gameFrame open the start screen.
      */
     public void prepareGame()
     {
-        celebGameList = new ArrayList<Base>();
+        PotatoGameList = new ArrayList<Base>();
         gameWindow.replaceScreen("START"); 
     }
 
@@ -53,10 +53,10 @@ public class PotatoGame
         if(guess.trim().equalsIgnoreCase(gamePotato.getName()))
         {
             correct = true;
-            celebGameList.remove(0);
-            if(celebGameList.size()>0)
+            PotatoGameList.remove(0);
+            if(PotatoGameList.size()>0)
             {
-                gamePotato = celebGameList.get(0);
+                gamePotato = PotatoGameList.get(0);
             }
             else
             {
@@ -73,9 +73,9 @@ public class PotatoGame
      */
     public void play()
     {
-        if (celebGameList != null && celebGameList.size() > 0 )
+        if (PotatoGameList != null && PotatoGameList.size() > 0 )
         {
-            this.gamePotato = celebGameList.get(0);
+            this.gamePotato = PotatoGameList.get(0);
             gameWindow.replaceScreen("GAME");
         } 
     }
@@ -94,7 +94,7 @@ public class PotatoGame
     {
         Base currentPotato;
         currentPotato = new Base(name, guess);
-        celebGameList.add(currentPotato);
+        PotatoGameList.add(currentPotato);
     }
 
     /**
@@ -132,7 +132,7 @@ public class PotatoGame
      */
     public int getPotatoGameSize()
     {
-        return celebGameList.size();
+        return PotatoGameList.size();
     }
 
     /**
