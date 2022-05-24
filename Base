@@ -1,0 +1,62 @@
+import java.util.ArrayList;
+
+public class Base
+{
+    private String name;
+    private ArrayList<String> clues;
+    
+    public Base()
+    {
+        name = "Nobody";
+        clues = new ArrayList<String>();
+    }
+    
+    public Base(String n)
+    {
+        name = n;
+        clues = new ArrayList<String>();
+    }
+    
+    public Base(String n, String c)
+    {
+        name = n;
+        clues = new ArrayList<String>();
+        clues.add(c);
+    }
+    
+    public String getName()
+    {
+        return name;
+    }
+    
+    public void setName(String n)
+    {
+        name = n;
+    }
+    
+    public void addClue(String c)
+    {
+        clues.add(c);
+    }
+    
+    public String getClue()
+    {
+        int r = (int)(Math.random() * clues.size());
+        return clues.remove(r);
+    }
+    
+    public String toString()
+    {
+        String ret = "";
+        for(String s : clues)
+        {
+            ret += s + " ";
+        }
+        return "This celebrity is " + name + " and the clues are " + ret;
+    }
+
+    public String getAnswer()
+    {
+        return name;
+    }
+}
