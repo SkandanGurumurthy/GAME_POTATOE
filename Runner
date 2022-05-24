@@ -4,5 +4,6 @@ public class Runner
     {
         PotatoFrame mine = new PotatoFrame();
         mine.display();
+        mine.play();
     }
 }
