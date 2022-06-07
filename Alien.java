@@ -1,68 +1,89 @@
-// package com.zetcode.sprite;
+import java.awt.*;
+/**
+ * The Alien class. 
+ */
+public class Alien {
 
-import javax.swing.ImageIcon;
+    public static int ALIEN_HEIGHT = 25;
+    public static int ALIEN_WIDTH = 15;
 
-public class Alien extends Sprite {
+    private int leftPosition = 0;
+    private int heightPosition = 0;
 
-    private Bomb bomb;
+    private boolean hitState = false;//Whether this alien has already been shot
 
-    public Alien(int x, int y) {
+    private Image alienImage = null;
 
-        initAlien(x, y);
+    SpaceInvaders spaceInvaders = null;
+
+    /**
+     *
+     */
+    public Alien(Image ai, SpaceInvaders si) {
+        alienImage = ai;
+        spaceInvaders = si;
     }
 
-    private void initAlien(int x, int y) {
-
-        this.x = x;
-        this.y = y;
-
-        bomb = new Bomb(x, y);
-
-        var alienImg = "src/images/alien.png";
-        var ii = new ImageIcon(alienImg);
-
-        setImage(ii.getImage());
+    /**
+     * Returns whether ythe alien had been hit
+     */
+    public boolean hasBeenHit() {
+        return hitState;
     }
 
-    public void act(int direction) {
+    /**
+     * Check if a shot fired hit an alien
+     */
+    public boolean hitAlien(int x, int y) {
 
-        this.x += direction;
-    }
-
-    public Bomb getBomb() {
-
-        return bomb;
-    }
-
-    public class Bomb extends Sprite {
-
-        private boolean destroyed;
-
-        public Bomb(int x, int y) {
-
-            initBomb(x, y);
+        //Is the alien currently alive?
+        if (hitState) {
+            //If it's alreay been shot then return false;
+            return false;
         }
 
-        private void initBomb(int x, int y) {
+        //First lets check the X range
+        if ((x >= leftPosition) && (x <= (leftPosition+ALIEN_WIDTH))) {
+            //X is ok, now lets check the Y range
+            if ((y >= heightPosition) && (y <= (heightPosition+ALIEN_HEIGHT))) {
+                //We shot an alien!
+                hitState = true;
+                return true;
+            }
+        } 
+        return false;
+    }
 
-            setDestroyed(true);
+    /**
+     * Set the position of the alien on the screen
+     */
+    public void setPosition(int x, int y) {
+        leftPosition = x;
+        heightPosition = y;
+    }
 
-            this.x = x;
-            this.y = y;
+    /**
+     * Returns the current x position of the alien
+     */
+    public int getXPos() {
+        return leftPosition;
+    }
 
-            var bombImg = "src/images/bomb.png";
-            var ii = new ImageIcon(bombImg);
-            setImage(ii.getImage());
-        }
+    /**
+     * Returns the current x position of the alien
+     */
+    public int getYPos() {
+        return heightPosition;
+    }
 
-        public void setDestroyed(boolean destroyed) {
-
-            this.destroyed = destroyed;
-        }
-
-        public boolean isDestroyed() {
-
-            return destroyed;
+    /**
+     * Draw the image of the Alien 
+     */ 
+    public void drawAlien(Graphics g) {
+        if (!hitState) {
+            g.setColor(Color.red);
+            g.fillRect(leftPosition, heightPosition, ALIEN_WIDTH, ALIEN_HEIGHT);
         }
     }
+
 }
